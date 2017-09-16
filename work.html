@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>排班</title>
+    <link rel="stylesheet" href="../../common/js/plugin/layui/css/layui.css">
+    <!-- <link rel="stylesheet" href="../../common/js/examples.css"> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+    <link rel="stylesheet" href="work.css">
+    <style>
+    .sortable-ghost {
+        opacity: 0.4;
+        background-color: #20767c;
+    }
+
+    .layui-layer-hui {
+        min-width: 300px!important;
+    }
+
+    .layui-form-select {
+        width: 180px;
+        height: 40px;
+    }
+
+    .layui-select-title {
+        width: 176px;
+        height: 40px;
+    }
+
+    .layui-select-title .layui-input {
+        background-color: #f5f5f5;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        text-align: center;
+        border: 0;
+    }
+    </style>
+    <script src="../../common/js/jquery.js"></script>
+    <script src="../../common/js/jquery.event.ue.js"></script>
+    <script src="../../common/js/jquery.udraggable.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <script src="template-web.js"></script>
+    <script src="../../common/js/plugin/layui/layui.js"></script>
+    <script src="./Sortable.min.js"></script>
+
+</head>
+
+<body>
+    <div class="wwraps">
+        <div class="dataleTit clear">
+            <div class="lf">
+                <div class="lf titleNow"></div>
+                <div class="lf titleUp">上一天</div>
+                <div class="lf titleCe">今天</div>
+                <div class="lf titleDown">下一天</div>
+            </div>
+            <div class="lf">
+                <div class="lf markCube"><span style="background-color: #fc474e;" class="cube"></span>待服务</div>
+                <div class="lf markCube"><span style="background-color: #fb7127;" class="cube"></span>服务中</div>
+                <div class="lf markCube"><span style="background-color: #ffa92b;" class="cube"></span>服务完成</div>
+                <div class="lf markCube"><span style="background-color: #e9e9e9;" class="cube"></span>屏蔽时间</div>
+            </div>
+        </div>
+        <div class="viewPt" style="overflow-x: auto;white-space: nowrap;">
+            <div class="container clear">
+                <div class="lf workDay" style="border:1px solid #dfdfdf;">
+                    <ul style="width:100%">
+                        <li style="width:100%;height:92px;background-color: #f5f5f5;" class="colorF"></li>
+                        <li style="width:100%;height:368px;line-height: 368px;background-color: #68cacd;" class="ta colorF">早上</li>
+                        <li style="width:100%;height:184px;line-height: 184px;background-color: #e57c5c;" class="ta colorF">中午</li>
+                        <li style="width:100%;height:460px;line-height: 460px;background-color: #adca6c;" class="ta colorF">下午</li>
+                        <li style="width:100%;height:460px;line-height: 460px;background-color: #df9f44;" class="ta colorF">晚上</li>
+                    </ul>
+                </div>
+                <!-- 西湖元华店 -->
+                <div class="lf workTime">
+                    <div class="ta xiayou borderTop" style="height:46px;line-height:46px; background-color: #f5f5f5;">
+                        <form action="" class="layui-form">
+                            <select name="" id="" style="background-color: #f5f5f5;">
+                                <!-- <option value="0">请选择</option> -->
+                                <option value="1">西湖元华店</option>
+                                <option value="2">澳门店</option>
+                                <option value="3">香港店</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="ta xiayou" style="height:46px;line-height:46px; background-color: #f5f5f5;">上班人员</div>
+                    <ul>
+                        <li class="xiayou">08:00--08:29</li>
+                        <li class="xiayou">08:30--08:59</li>
+                        <li class="xiayou">09:00--09:29</li>
+                        <li class="xiayou">09:30--09:59</li>
+                        <li class="xiayou">10:00--10:29</li>
+                        <li class="xiayou">10:30--10:59</li>
+                        <li class="xiayou">11:00--11:29</li>
+                        <li class="xiayou">11:30--11:59</li>
+                    </ul>
+                    <ul>
+                        <li class="xiayou">12:00--12:29</li>
+                        <li class="xiayou">12:30--12:59</li>
+                        <li class="xiayou">13:00--13:29</li>
+                        <li class="xiayou">13:30--13:59</li>
+                    </ul>
+                    <ul>
+                        <li class="xiayou">14:00--14:29</li>
+                        <li class="xiayou">14:30--14:59</li>
+                        <li class="xiayou">15:00--15:29</li>
+                        <li class="xiayou">15:30--15:59</li>
+                        <li class="xiayou">16:00--16:29</li>
+                        <li class="xiayou">16:30--16:59</li>
+                        <li class="xiayou">17:00--17:29</li>
+                        <li class="xiayou">17:30--17:59</li>
+                        <li class="xiayou">18:00--18:29</li>
+                        <li class="xiayou">18:30--18:59</li>
+                    </ul>
+                    <ul>
+                        <li class="xiayou">19:00--19:29</li>
+                        <li class="xiayou">19:30--19:59</li>
+                        <li class="xiayou">20:00--20:29</li>
+                        <li class="xiayou">20:30--20:59</li>
+                        <li class="xiayou">21:00--21:29</li>
+                        <li class="xiayou">21:30--21:59</li>
+                        <li class="xiayou">22:00--22:29</li>
+                        <li class="xiayou">22:30--22:59</li>
+                        <li class="xiayou">23:00--23:29</li>
+                        <li class="xiayou">23:30--23:59</li>
+                    </ul>
+                </div>
+                <!-- 早班 -->
+                <div class="lf workMoring">
+                    <div class="workMoring_head xiayou borderTop bgf5">早班</div>
+                    <!-- append的容器 -->
+                    <div class="workMoring_con sortable" id='sortEn1' style="display: flex"></div>
+                </div>
+                <!-- 中班 -->
+                <div class="lf workNoon">
+                    <div class="workNoon_head xiayou borderTop bgf5">中班</div>
+                    <!-- append的容器 -->
+                    <div class="workNoon_con sortable" id='sortEn2' style="display: flex"></div>
+                </div>
+                <!-- 晚班 -->
+                <div class="lf workNight">
+                    <div class="workNight_head xiayou borderTop bgf5">晚班</div>
+                    <!-- append的容器 -->
+                    <div class="workNight_con sortable" id='sortEn3' style="display: flex"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="con  hide" style="width:100%;height:46px;padding:0 20px;overflow-x: hidden">
+        <div class="holder" style="width:100%;height:46px;position:relative;overflow-x: hidden"></div>
+    </div>
+    <!-- 选择员工弹出框 -->
+    <div id="select_staff" class="hide">
+        <ul class="clear staffName_con">
+            <!-- data-name属性用于区别每一个顾客 -->
+            <li class="staffName" data-toggle="close" data-name="a">张三</li>
+            <li class="staffName" data-toggle="close" data-name="b">李四</li>
+            <li class="staffName" data-toggle="close" data-name="c">唐程杰</li>
+            <li class="staffName" data-toggle="close" data-name="d">梁龙波</li>
+            <li class="staffName" data-toggle="close" data-name="e">李文磊</li>
+            <li class="staffName" data-toggle="close" data-name="f">谷彦争</li>
+            <li class="staffName" data-toggle="close" data-name="g">朱蒙</li>
+            <li class="staffName" data-toggle="close" data-name="h">胡胜杰</li>
+            <li class="staffName" data-toggle="close" data-name="i">吴文迪</li>
+            <li class="staffName" data-toggle="close" data-name="j">李猛</li>
+            <li class="staffName" data-toggle="close" data-name="k">李1</li>
+            <li class="staffName" data-toggle="close" data-name="l">李2</li>
+            <li class="staffName" data-toggle="close" data-name="m">李3</li>
+            <li class="staffName" data-toggle="close" data-name="n">李4</li>
+            <li class="staffName" data-toggle="close" data-name="o">李5</li>
+            <li class="staffName" data-toggle="close" data-name="p">李6</li>
+            <li class="staffName" data-toggle="close" data-name="q">李7</li>
+            <li class="staffName" data-toggle="close" data-name="r">李8</li>
+        </ul>
+    </div>
+    <!-- 排班弹出框 -->
+    <!-- <div class="shade hide"> -->
+    <div id="arrange" draggable="true" class="hide ">
+        <div class="title_cusm">排班加班</div>
+        <span class="layui-layer-setwin">
+            <a href="javascript:;" class="layui-layer-ico layui-layer-close layui-layer-close2"></a>
+        </span>
+        <div style="padding:10px 20px;">
+            <div class="arranPlan ta grid">排班</div>
+            <div class="arranExtra ta grid">加班</div>
+            <div class=" layui-layer-btn layui-layer-btn-c">
+                <a href="javascript:;" class="layui-layer-btn0 footer_cusm">取消</a>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+    <!-- 添加预约弹出框 -->
+    <div id="coupon" draggable="true" class="hide ">
+        <div class="title_coupon">添加预约</div>
+        <span class="layui-layer-setwin">
+            <a href="javascript:;" class="layui-layer-ico layui-layer-close layui-layer-close2"></a>
+        </span>
+        <div style="padding:10px 20px;">
+            <div class="grid ta addOrder">添加订单</div>
+            <div class="grid ta multiServer">多人服务</div>
+            <div class="grid ta shieldingTime">屏蔽时间</div>
+            <div class=" layui-layer-btn layui-layer-btn-c">
+                <a href="javascript:;" class="layui-layer-btn0 footer_coupon">取消</a>
+            </div>
+            <!-- <div class="footer_coupon">取消</div> -->
+        </div>
+    </div>
+    <!-- 选择预约顾客弹出框 -->
+    <div id="bookCustomers" class="hide">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <div class="layui-input-inline" style="width:100%">
+                    <input type="text" name="" placeholder="编号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline" style="margin-left: 5%">
+                <div class="layui-input-inline" style="width:100%">
+                    <input type="text" name="" placeholder="姓名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline" style="margin-left: 5%">
+                <div class="layui-input-inline" style="width:100%">
+                    <input type="text" name="" placeholder="卡号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <div class="layui-input-inline" style="width:100%">
+                    <input type="text" name="" placeholder="手机号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline" style="margin-left: 5%">
+                <div class="layui-input-inline" style="width:100%">
+                    <input type="text" name="" placeholder="老erp手机号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline" style="margin-left: 5%">
+                <div class="layui-input-inline" style="width:100%">
+                    <a href="javascript:;" style="background-color: #20767c;color:#fff;display: inline-block;width:100%;height: 38px;line-height: 38px;width:250px;text-align: center">搜索</a>
+                </div>
+            </div>
+        </div>
+        <div class="table_no">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:50px"></th>
+                        <th>顾客编号</th>
+                        <th>顾客姓名</th>
+                        <th colspan="2">手机号</th>
+                        <th colspan="2">老erp手机号</th>
+                        <th>所属顾问</th>
+                        <th>所属美容师</th>
+                        <th>所属部门</th>
+                        <th colspan="2">最后一次到店时间</th>
+                        <th style="width:50px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="width:50px"></td>
+                        <td>顾客编号</td>
+                        <td class="custom_name">张三</td>
+                        <td colspan="2">17557280376</td>
+                        <td colspan="2">17557280376</td>
+                        <td>a顾问</td>
+                        <td>a美容师</td>
+                        <td>a门店</td>
+                        <td colspan="2">2017.9.09</td>
+                        <td style="width:50px;"><span class="yuyue">预约</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width:50px"></td>
+                        <td>顾客编号</td>
+                        <td class="custom_name">张四</td>
+                        <td colspan="2">17557280376</td>
+                        <td colspan="2">17557280376</td>
+                        <td>a顾问</td>
+                        <td>a美容师</td>
+                        <td>a门店</td>
+                        <td colspan="2">2017.9.09</td>
+                        <td style="width:50px;"><span class="yuyue">预约</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width:50px"></td>
+                        <td>顾客编号</td>
+                        <td class="custom_name">张五</td>
+                        <td colspan="2">17557280376</td>
+                        <td colspan="2">17557280376</td>
+                        <td>a顾问</td>
+                        <td>a美容师</td>
+                        <td>a门店</td>
+                        <td colspan="2">2017.9.09</td>
+                        <td style="width:50px;"><span class="yuyue">预约</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width:50px"></td>
+                        <td>顾客编号</td>
+                        <td class="custom_name">张六</td>
+                        <td colspan="2">17557280376</td>
+                        <td colspan="2">17557280376</td>
+                        <td>a顾问</td>
+                        <td>a美容师</td>
+                        <td>a门店</td>
+                        <td colspan="2">2017.9.09</td>
+                        <td style="width:50px;"><span class="yuyue">预约</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width:50px"></td>
+                        <td>顾客编号</td>
+                        <td class="custom_name">张七</td>
+                        <td colspan="2">17557280376</td>
+                        <td colspan="2">17557280376</td>
+                        <td>a顾问</td>
+                        <td>a美容师</td>
+                        <td>a门店</td>
+                        <td colspan="2">2017.9.09</td>
+                        <td style="width:50px;"><span class="yuyue">预约</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 顾客订单号弹出框 -->
+    <div id="orderCopy" class="hide">
+        <div class="ta " style="height:40px;line-height: 40px;margin-bottom: 25px; border:0;font-weight: bold;">订单号 : 797345621</div>
+        <div class="grid ta copyHao">复制订单号</div>
+        <div class="grid ta cancelAppment">取消预约</div>
+        <div class="grid ta ">创建收银订单</div>
+        <div class="grid ta " onclick="javascript:window.location.href='work_detail.html';">查看详情</div>
+    </div>
+    <!-- 多人服务弹出框 -->
+    <div id="OrderNumber" class="hide">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width:100px">订单号 :</label>
+                <div class="layui-input-inline" style="width:245px">
+                    <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+                <a href="javascript:;" style="margin-left: 20px;background-color: #20767c;color:#fff;width:50px;height: 38px;line-height: 38px;border-radius: 8px;display: inline-block;">查询</a>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width:100px">顾客姓名 :</label>
+                <div class="layui-input-inline" style="width:245px">
+                    <input type="text" name="" placeholder="反显" disabled autocomplete="off" value="反显" id="cusName" class="layui-input">
+                </div>
+                <a href="javascript:;" style="margin-left: 20px;background-color: #20767c;color:#fff;width:50px;height: 38px;line-height: 38px;border-radius: 8px;visibility:hidden;display: inline-block; ">查询</a>
+            </div>
+        </div>
+    </div>
+    <!-- 初始化模板 -->
+    <script id="test" type="text/html">
+        <div class="xiayou width92"><a class="add" href="javascript:;"><img src="add.png" alt=""></a></div>
+        <ul>
+            {{each list value i}}
+            <li class="xiayou">{{value}}</li>
+            {{/each}}
+        </ul>
+    </script>
+    <!-- 添加成员模板 -->
+    <script id="actual" type="text/html">
+        <div class="xiayou width92 author">
+            <span>{{title}}</span>
+            <div class="bgR width92 height46 remove hide">删除</div>
+        </div>
+        <ul>
+            {{each list value i}}
+            <li class="xiayou bgF5 cell" data-state="gray" value="def" appoint='aul'>{{value}}</li>
+            {{/each}}
+        </ul>
+    </script>
+    <!-- 随页面滚动模板 -->
+    <script id="move" type="text/html">
+        {{each list value i}}
+        <div class="xiayou width92 lf">{{value}}</div>
+        {{/each}}
+    </script>
+    <script src="work.js"></script>
+</body>
+
+</html>
