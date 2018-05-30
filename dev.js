@@ -21,3 +21,4 @@ ws.onmessage = function (evt) {
 ws.onclose = function (evt) {
     console.log("Connection closed.");
 };
+console.log(1)
