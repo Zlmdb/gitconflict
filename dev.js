@@ -29,4 +29,4 @@ while(true){
     }
     console.log('你好');
     count++;
-}
+}console.log('nomo')
