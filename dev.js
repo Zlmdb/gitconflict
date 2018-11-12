@@ -22,3 +22,11 @@ ws.onclose = function (evt) {
     console.log("Connection closed.");
 };
 console.log(1)
+var count=0;
+while(true){
+    if (count>6){
+            break;
+    }
+    console.log('你好');
+    count++;
+}
