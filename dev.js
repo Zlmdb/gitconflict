@@ -38,6 +38,7 @@ function sum (x, y) {
 	return x + y;
 }
 sum(2,5);
+console.log('重新变基')
 // class dfd {/*eslint-disabled-line */
 //     findIn () {
 //         console.log(9)
