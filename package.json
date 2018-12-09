@@ -1,0 +1,23 @@
+{
+  "name": "gitconflict",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dev.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zlmdb/gitconflict.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zlmdb/gitconflict/issues"
+  },
+  "homepage": "https://github.com/Zlmdb/gitconflict#readme",
+  "dependencies": {
+    "eslint": "^5.9.0"
+  }
+}
