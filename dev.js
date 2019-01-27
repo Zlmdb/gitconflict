@@ -35,8 +35,9 @@ console.log(当前是在dev2分支上做提交);
 console.log("nomo");
 //在nomo分支再提交一次
 function sum (x, y) {
-	return x + y;
+	return x
 }
+console.log(23)
 sum(2,5);
 console.log('家的感觉反馈结果反馈老公')
 console.log('的发生地')
