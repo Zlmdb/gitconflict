@@ -1,4 +1,4 @@
-// /* eslint-disable no-console*/
+/* eslint-disable */
 console.log ("dv发给他刚刚好");
 var cd = "345";
 var cd1=cd;
